@@ -52,15 +52,20 @@ app.post('/write-plc', async (req, res) => {
 
 app.post('/dater', async (req, res) => {
   try {
+    console.log(req.body);
     const date = new Date();
     const { type } = req.body;
+    console.log(type);
     const text = 'INSERT INTO datelog(type, dater) VALUES($1, $2)';
     const values = [type, date];
-    await pool.query(text, values);
-    
+    const result= await pool.query(text, values)
+    console.log(result);
+
     res.status(200).send();
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: err.toString() });
+    
   }
 });
 

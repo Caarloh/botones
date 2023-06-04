@@ -28,7 +28,7 @@ export class ButtonsComponent{
      if (this.onOff == "off"){
        this.disabled = true;
        this.rutine = "none"
-       type = "on"
+       type = 'off'
        this.PLCconnect.state( type ).subscribe(
          response => console.log(response),
          error => console.error(error)
@@ -36,7 +36,7 @@ export class ButtonsComponent{
      } else{
       
        this.disabled = false;
-       type = "off"
+       type = 'on'
        this.PLCconnect.state( type ).subscribe(
          response => console.log(response),
          error => console.error(error)
