@@ -1,0 +1,18 @@
+<section>
+    <mat-button-toggle-group [(ngModel)]="onOff" (click)="turnOnOff()" aria-label="Font Style">
+        <mat-button-toggle value="on">Encendido</mat-button-toggle>
+        <mat-button-toggle value="off">Apagado</mat-button-toggle>
+    </mat-button-toggle-group>
+    <p>Chosen value is {{onOff}}</p>
+</section>
+<div *ngIf="!disabled">
+    <section>
+        <mat-button-toggle-group [(ngModel)]="rutine" aria-label="Font Style">
+            <mat-button-toggle value="rutina1">Rutina 1</mat-button-toggle>
+            <mat-button-toggle value="rutina2">Rutina 2</mat-button-toggle>
+            <mat-button-toggle value="rutina3">Rutina 3</mat-button-toggle>
+        </mat-button-toggle-group>
+        <p>Chosen value is {{rutine}}</p>
+    </section>
+</div>
+<button mat-raised-button color="primary" (click)="send()">RECIBIR DATOS</button>
