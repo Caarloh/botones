@@ -8,15 +8,19 @@ export class PLCconnectService {
 
   constructor(private http: HttpClient) { }
 
+  //Funcion que llama a una a la API almacenada en un servidor local con puerto 3000 
+  //y que activará la lectura en el PLC
   readPLCData() {
     return this.http.get('http://localhost:3000/read-plc');
   }
-  
-  writePLCData(address: number, value: number) {
+  //Funcion que llama a una a la API almacenada en un servidor local con puerto 3000 
+  //y que activará la escritura en el PLC
+  writePLCData(address: string, value: string) {
     return this.http.post('http://localhost:3000/write-plc', { address, value });
   }
-
-  state(type: string ) {
+  //Funcion que llama a una a la API almacenada en un servidor local con puerto 3000 
+  //y que guardará en una base de datos cuando se utilice el PLC
+  usagePLC(type: string ) {
     return this.http.post('http://localhost:3000/dater', { type });
   }
 }

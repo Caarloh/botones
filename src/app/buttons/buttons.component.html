@@ -1,18 +1,23 @@
 <section>
-    <mat-button-toggle-group [(ngModel)]="onOff" (click)="turnOnOff()" aria-label="Font Style">
-        <mat-button-toggle value="on">Encendido</mat-button-toggle>
-        <mat-button-toggle value="off">Apagado</mat-button-toggle>
+    <mat-button-toggle-group aria-label="Font Style">
+        <mat-button-toggle (click)="turn('on')">ENCENDIDO</mat-button-toggle>
+        <mat-button-toggle (click)="turn('off')">APAGADO </mat-button-toggle>
     </mat-button-toggle-group>
-    <p>Chosen value is {{onOff}}</p>
 </section>
 <div *ngIf="!disabled">
     <section>
-        <mat-button-toggle-group [(ngModel)]="rutine" aria-label="Font Style">
-            <mat-button-toggle value="rutina1">Rutina 1</mat-button-toggle>
-            <mat-button-toggle value="rutina2">Rutina 2</mat-button-toggle>
-            <mat-button-toggle value="rutina3">Rutina 3</mat-button-toggle>
+        <mat-button-toggle-group aria-label="Font Style">
+            <mat-button-toggle (click)="changeRutine('manual')">MANUAL</mat-button-toggle>
+            <mat-button-toggle (click)="changeRutine('rutine1')">RUTINA1</mat-button-toggle>
+            <mat-button-toggle (click)="changeRutine('rutine2')">RUTINA2</mat-button-toggle>
         </mat-button-toggle-group>
-        <p>Chosen value is {{rutine}}</p>
+    </section>
+    <section>
+        <mat-button-toggle-group [(ngModel)]="dir" aria-label="Font Style">
+            <mat-button-toggle value="left">IZQUIERDA</mat-button-toggle>
+            <mat-button-toggle value="right">DERECHA</mat-button-toggle>
+        </mat-button-toggle-group>
     </section>
 </div>
-<button mat-raised-button color="primary" (click)="send()">RECIBIR DATOS</button>
+<!-- debe llevar (click)="send()" -->
+<button mat-raised-button color="primary">RECIBIR DATOS</button>
