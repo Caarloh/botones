@@ -25,6 +25,8 @@ export class ButtonsComponent{
     this.disabled = false; 
     if (type === 'on'){
       this.start();
+    } else {
+      this.disabled = true; 
     }
     this.sendData(type);
   }
@@ -48,6 +50,22 @@ export class ButtonsComponent{
 //Funcion que cambiará la rutina activa
   changeRutine(rutina: string){
     this.rutinaActiva = rutina;
+    console.log(this.rutinaActiva)
+
+  }
+
+  //Funcion que cambiará la rutina activa
+  changeDir(dir: string){
+    this.dir = dir;
+    console.log(this.dir)
+  }
+
+  //Función que se activa al clickear el boton
+  send(){
+    this.PLCconnect.writePLCData( this.rutinaActiva ? this.rutinaActiva : "", this.dir ? this.dir : "" ).subscribe(
+      response => console.log(response),
+      error => console.error(error)
+    );
   }
 
 

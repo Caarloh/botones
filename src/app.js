@@ -18,8 +18,8 @@ const pool = new Pool({ //Hacemos la conexion con la base de datos
 });
 
 //Conectarnos a un PLC  a traves del puerto sub COM3 con una frecuencia de baudios de 9600
-  client.connectRTUBuffered("COM3", { baudRate: 9600 });
-  client.setID(1);
+  // client.connectRTUBuffered("COM3", { baudRate: 9600 });
+  // client.setID(1);
 // Conectarse al servidor Modbus en la dirección IP y puerto de tu simulador
 
 //Leer registros del PLC
@@ -46,13 +46,15 @@ app.get('/read-plc', async (req, res) => {
 app.post('/write-plc', async (req, res) => {
   try {
     const { address, value } = req.body; //Obtenemos los datos desde el manejo de vista del usuario
-    await client.writeRegister(address, value); //Le decimos al cliente que ingrese el valor 'value' en la direccion del PLC 'address'
+    //await client.writeRegister(address, value); //Le decimos al cliente que ingrese el valor 'value' en la direccion del PLC 'address'
     // ambos dados por usuario
 
     // Insertar datos en la base de datos para tener un registro de lo escrito en el PLC
     const text = 'INSERT INTO rutina(address, value) VALUES($1, $2)';
     const values = [address, value];
-    await pool.query(text, values);
+    await pool.query(text, values).then((res)=>{
+      console.log(res);
+    });
 
     res.status(200).send();  //Si todo va correcto el programa nos devolvera 200
   } catch (err) {

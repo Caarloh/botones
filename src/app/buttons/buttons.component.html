@@ -13,11 +13,11 @@
         </mat-button-toggle-group>
     </section>
     <section>
-        <mat-button-toggle-group [(ngModel)]="dir" aria-label="Font Style">
-            <mat-button-toggle value="left">IZQUIERDA</mat-button-toggle>
-            <mat-button-toggle value="right">DERECHA</mat-button-toggle>
+        <mat-button-toggle-group  aria-label="Font Style">
+            <mat-button-toggle (click)="changeDir('left')">IZQUIERDA</mat-button-toggle>
+            <mat-button-toggle (click)="changeDir('right')">DERECHA</mat-button-toggle>
         </mat-button-toggle-group>
     </section>
 </div>
 <!-- debe llevar (click)="send()" -->
-<button mat-raised-button color="primary">RECIBIR DATOS</button>
+<button mat-raised-button color="primary" (click)="send()">RECIBIR DATOS</button>
